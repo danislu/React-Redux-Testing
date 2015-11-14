@@ -1,0 +1,16 @@
+{
+  "name": "thesloth",
+  "description": "",
+  "main": "./app/index.js",
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
