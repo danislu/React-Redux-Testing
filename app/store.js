@@ -1,15 +1,20 @@
-import { compose, createStore } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import createLogger from 'redux-logger'
 import persistState from 'redux-localstorage';
 
 import app from './reducers';
 import { LOCAL_STORAGE_KEY, initalState } from './constants';
 
-const createPersistentStore = compose(
+const loggerMiddleware = createLogger();
+
+const composedStore = compose(
+    applyMiddleware(thunk, loggerMiddleware),
     persistState([], {
         key: LOCAL_STORAGE_KEY
     })
 )(createStore);
 
-const store = createPersistentStore(app, initalState);
+const store = composedStore(app, initalState);
 
 export default store;
